@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
+import SearchForm from './flight-finder/SearchForm.js';
+import SearchResultList from './flight-finder/SearchResultlist';
 import superagent from 'superagent';
-import SearchForm from './flight-finder/searchform.js';
-import SearchResultList from './flight-finder/searchresultlist';
 import '../styles/App.css'
 
 export default class App extends React.Component {
@@ -9,17 +9,11 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       flights: [],
-      airports: [],
       hasError: false,
     };
     this.getFlights = this.getFlights.bind(this);
     this.sortFlights = this.sortFlights.bind(this);
   }
-
-  componentDidUpdate() {
-    console.log('__STATE__', this.state);
-  }
-
 
   getFlights(origin, destination) {
     let url = `http://localhost:5000/api/flights/search?from=${origin}&to=${destination}`;
@@ -35,14 +29,17 @@ export default class App extends React.Component {
   sortFlights(sortBy) { 
     let flights = this.state.flights;
     switch (sortBy) {
-      case 'departs':
+      case 'departsForward':
         flights.sort((a, b) => new Date(a.departs) - new Date(b.departs));
         break;
-      case 'arrives':
-        flights.sort((a, b) => new Date(a.arrives) - new Date(b.arrives));
+      case 'departsReverse':
+        flights.sort((a, b) => new Date(b.departs) - new Date(a.departs));
         break;
       case 'mainCabinPrice':
         flights.sort((a, b) => a.mainCabinPrice - b.mainCabinPrice);
+        break;
+      case 'firstClassPrice':
+        flights.sort((a, b) => a.firstClassPrice - b.firstClassPrice);
         break;
       default:
         break;
@@ -57,11 +54,9 @@ export default class App extends React.Component {
           <h1>Imaginary Airlines</h1>
         </header>
         <main> 
-          <h1>Flight Finder</h1>
-          <SearchForm searchClass={this.state.hasError ? 'error' : 'success'} flightSearch={this.getFlights} airports={this.state.airports}/>
-          <ul>
-            <SearchResultList searchResults={this.state.flights} sortFlights={this.sortFlights}/>
-          </ul>
+          <h1 className="pageTitle">Flight Finder</h1>
+          <SearchForm searchClass={this.state.hasError ? 'error' : 'success'} flightSearch=   {this.getFlights} airports={this.state.airports}/>
+          <SearchResultList searchResults={this.state.flights} sortFlights={this.sortFlights}/>
         </main>
       </Fragment>
     );
