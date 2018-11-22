@@ -8,8 +8,7 @@ export default class SearchForm extends React.Component {
     super(props);
 
     this.state = {
-      multiple: false,
-      options: [],
+      airports: [],
       selected: [],
       origin: '',
       destination: '',
@@ -21,16 +20,11 @@ export default class SearchForm extends React.Component {
     this.handleDestinationChange = this.handleDestinationChange.bind(this)
   }
 
-  // componentWillReceiveProps(){
-  //   let options = this.props.options;
-  //   this.setState({options});
-  // }
-
   async componentWillMount() {
     await superagent.get(`http://localhost:5000/api/airports/all`)
       .then(results => {
-        let options = results.body;
-        this.setState({options});  
+        let airports = results.body;
+        this.setState({airports});  
       })
   }
 
@@ -58,61 +52,57 @@ export default class SearchForm extends React.Component {
   }
 
   render() {
-    const {multiple} = this.state;
     let isInvalid;
     let isValid;
     let validationState;
 
     return (
       <Fragment>
-        <Form onSubmit={this.handleSubmit} inline>
-          <FormGroup validationState={validationState} bsSize="large">
-              <ControlLabel>From</ControlLabel>
-              <Typeahead
-                id="searchFormOrigin"
-                isInvalid={isInvalid}
-                bsClass="searchForm"
-                isValid={isValid}
-                onChange={(origin) => this.setState({origin})}
-                onFocus={this.handleFocus}
-                labelKey="name"
-                multiple={multiple}
-                options={this.state.options}
-                placeholder="Select a departure airport..."
-                width="100px"
-                // selected={this.state.origin}
-              />
-          </FormGroup>{' '}
-          <FormGroup validationState={validationState} bsSize="large">
-              <ControlLabel>To</ControlLabel>
-              <Typeahead
-                id="searchFormDestination"
-                bsClass="searchForm"
-                isInvalid={isInvalid}
-                isValid={isValid}
-                onChange={(destination) => this.setState({destination})}
-                onFocus={this.handleFocus}
-                labelKey="name"
-                multiple={multiple}
-                options={this.state.options}
-                placeholder="Select a destination airport..."
-                width="100px"
-                // selected={this.state.destination}
-              />
-          </FormGroup>{' '}
-          <div id="searchBtn">
-            <Button
-              className="btn-outline-primary"
-              bsStyle="primary"
-              type="submit">
-              Find Flights
-            </Button>
-          </div>
-        </Form>
+        <div id="searchForm">
+          <Form onSubmit={this.handleSubmit} inline>
+            <FormGroup validationState={validationState} bsSize="large">
+                <ControlLabel>From</ControlLabel>
+                <Typeahead
+                  id="searchFormOrigin"
+                  isInvalid={isInvalid}
+                  bsClass="searchForm"
+                  isValid={isValid}
+                  onChange={(origin) => this.setState({origin})}
+                  onFocus={this.handleFocus}
+                  labelKey="name"
+                  multiple={false}  
+                  options={this.state.airports}
+                  placeholder="Select a departure airport..."
+                  width="100px"
+                />
+            </FormGroup><div id="arrow">  ➤  </div>
+            <FormGroup validationState={validationState} bsSize="large">
+                <ControlLabel>To</ControlLabel>
+                <Typeahead
+                  id="searchFormDestination"
+                  bsClass="searchForm"
+                  isInvalid={isInvalid}
+                  isValid={isValid}
+                  onChange={(destination) => this.setState({destination})}
+                  onFocus={this.handleFocus}
+                  labelKey="name"
+                  multiple={false}  
+                  options={this.state.airports}
+                  placeholder="Select a destination airport..."
+                  width="100px"
+                />
+            </FormGroup>{' '}
+            <div id="searchBtn">
+              <Button
+                className="btn-outline-primary noSelect"
+                bsStyle="primary"
+                type="submit">
+                Find Flights
+              </Button>
+            </div>
+          </Form>
+        </div>
       </Fragment>
-
-
- 
     );
   }
 }
