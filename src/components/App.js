@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import SearchForm from './flight-finder/SearchForm.js';
-import SearchResultList from './flight-finder/SearchResultlist';
+import SearchResultList from './flight-finder/SearchResultList';
 import superagent from 'superagent';
 import '../styles/App.css'
 

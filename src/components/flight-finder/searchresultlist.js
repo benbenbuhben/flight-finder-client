@@ -22,7 +22,6 @@ export default class SearchResultList extends React.Component {
  
   render() {
     let sortTab, resultHeading;
-    console.log(uuid());
     if (this.props.searchResults.length){
 
       resultHeading = <h3 id="resultHeading">Showing {this.props.searchResults.length} flights from {this.props.searchResults[0].from} to {this.props.searchResults[0].to}...</h3>

@@ -49,7 +49,6 @@ header > h1 {
 
 #searchForm {
   text-align: center;
-  /* padding-top: 50px; */
 }
 
 .rbt-input-main {
@@ -110,7 +109,6 @@ ul {
 
 ul > form {
   text-align: right;
-  /* padding-right: 50px; */
   padding-bottom: 20px;
 }
 
@@ -190,7 +188,6 @@ select:focus {
 }
 
 .prices {
-  /* margin: auto; */
   margin-right: 30px;
 }
 
@@ -198,6 +195,10 @@ select:focus {
   float: right;
   margin-right: 15px;
   margin-bottom: 0px;
+}
+
+.price {
+  color:#01426a;
 }
 
 .panel-body {
