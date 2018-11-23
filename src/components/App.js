@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react';
 import SearchForm from './flight-finder/SearchForm.js';
-import SearchResultList from './flight-finder/SearchResultList';
+import SearchResults from './flight-finder/SearchResults';
 import superagent from 'superagent';
-import '../styles/App.css'
+import '../styles/App.css';
+import '../styles/flight-finder/SearchForm.css';
+import '../styles/flight-finder/SearchResults.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -56,7 +58,7 @@ export default class App extends React.Component {
         <main> 
           <h1 className="pageTitle">Flight Finder</h1>
           <SearchForm searchClass={this.state.hasError ? 'error' : 'success'} flightSearch=   {this.getFlights} airports={this.state.airports}/>
-          <SearchResultList searchResults={this.state.flights} sortFlights={this.sortFlights}/>
+          <SearchResults searchResults={this.state.flights} sortFlights={this.sortFlights}/>
         </main>
       </Fragment>
     );

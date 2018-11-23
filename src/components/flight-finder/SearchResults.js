@@ -3,7 +3,8 @@ import {Form, FormGroup, ControlLabel, FormControl, Panel} from 'react-bootstrap
 import { CSSTransitionGroup } from 'react-transition-group';
 import {v4 as uuid} from 'uuid';
 
-export default class SearchResultList extends React.Component {
+
+export default class SearchResults extends React.Component {
   constructor(props) {
     super(props);
 
@@ -93,7 +94,7 @@ export default class SearchResultList extends React.Component {
         {resultHeading}
         {sortTab}
         <CSSTransitionGroup
-          transitionName="example"
+          transitionName="results"
           transitionAppear={true}
           transitionAppearTimeout={500}
           transitionEnterTimeout={500}

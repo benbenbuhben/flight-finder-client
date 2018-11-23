@@ -12,13 +12,10 @@ export default class SearchForm extends React.Component {
       selected: [],
       origin: [],
       destination: [],
-      // isInvalid: true,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFocus = this.handleFocus.bind(this)
-    // this.handleOriginChange = this.handleOriginChange.bind(this)
-    // this.handleDestinationChange = this.handleDestinationChange.bind(this)
   }
 
   async componentWillMount() {
@@ -29,11 +26,6 @@ export default class SearchForm extends React.Component {
       })
   }
 
-  // componentDidUpdate() {
-  //   let isInValid = !(this.state.origin && this.state.destination);
-  //   this.setState({isInValid})
-  // }
-
   handleSubmit(event){
     event.preventDefault()
     let originCode = this.state.origin[0].code;
@@ -41,40 +33,13 @@ export default class SearchForm extends React.Component {
     this.props.flightSearch(originCode, destinationCode);
   }
 
-  // handleOriginChange(event){
-  //   event.preventDefault()
-  //   let origin = event.target.searchFormOrigin.value.trim();
-  //   this.setState({origin})
-  // }
-
-  // handleDestinationChange(event){
-  //   event.preventDefault()
-  //   let destination = event.target.searchFormDestination.value.trim();
-  //   this.setState({destination})
-  // }
-
   handleFocus(event) {
     event.target.select();
   }
 
   render() {
-    const {origin, destination, airports} = this.state;
+    const {origin, destination} = this.state;
     let validationStateOrigin, validationStateDestination;
-
-    // if (origin.length || destination.length) {
-      
-
-    //   if (origin.length && !destination.length){
-    //     validationState = 'error';
-    //   }
-    //   else if (destination.length && !origin.length){
-    //     validationState = 'error';
-    //   }
-    //   else {
-    //     validationState = 'success';
-    //   }
-    //   console.log({validationState})
-    // }
 
     return (
       <Fragment>
