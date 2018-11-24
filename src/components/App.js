@@ -18,7 +18,8 @@ export default class App extends React.Component {
   }
 
   getFlights(origin, destination) {
-    let url = `http://localhost:5000/api/flights/search?from=${origin}&to=${destination}`;
+    let baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
+    let url = `${baseURL}/api/flights/search?from=${origin}&to=${destination}`;
     superagent.get(url)
       .then(results => {
         this.setState({hasError: false});

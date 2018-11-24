@@ -19,7 +19,9 @@ export default class SearchForm extends React.Component {
   }
 
   async componentWillMount() {
-    await superagent.get(`http://localhost:5000/api/airports/all`)
+    let baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
+    let url = `${baseURL}/api/airports/all`;
+    await superagent.get(url)
       .then(results => {
         let airports = results.body;
         this.setState({airports});  
