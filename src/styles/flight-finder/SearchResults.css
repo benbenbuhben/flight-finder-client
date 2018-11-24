@@ -2,6 +2,8 @@ ul {
   list-style-type: none;
   padding-left: 15%;
   padding-right: 15%;
+  margin-bottom: 0px;
+  padding-bottom: 20px;
 }
 
 ul > form {
@@ -9,11 +11,24 @@ ul > form {
   padding-bottom: 20px;
 }
 
+#formControlsSelect {
+  cursor: pointer;
+  outline:none;
+}
+
+#formControlsSelect:focus {
+  outline:none;
+}
+
+
+
 select:focus {
   outline:none;
 }
 
 #resultHeading {
+  margin-top: 0px;
+  padding-top: 20px;
   font-size: 21px;
   font-style: italic;
   color: #01426a;
@@ -28,6 +43,7 @@ select:focus {
 }
 
 .mainFlightCard {
+  opacity: 0.9;
   box-shadow: 0px 1px 5px 1px rgba(100, 100, 100, 0.49);
 }
 
@@ -92,6 +108,8 @@ select:focus {
   float: right;
   margin-right: 15px;
   margin-bottom: 0px;
+  box-shadow: 0px 1px 3px 1px rgba(197, 121, 121, 0.3);
+  width: 125px;
 }
 
 .price {
@@ -116,7 +134,7 @@ select:focus {
   user-select: none;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 985px) {
   .prices {
     margin: auto;
     /* margin-right: 30px; */
@@ -133,6 +151,8 @@ select:focus {
   }
 
   #resultHeading {
+    margin-top: 0px;
+    padding-top: 20px;
     text-align: center;
     font-size: 21px;
     font-style: italic;
