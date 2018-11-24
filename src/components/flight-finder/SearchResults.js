@@ -1,6 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Form, FormGroup, ControlLabel, FormControl, Panel} from 'react-bootstrap';
 import { CSSTransitionGroup } from 'react-transition-group';
+import scrollToComponent from 'react-scroll-to-component';
 import {v4 as uuid} from 'uuid';
 
 
@@ -20,12 +22,20 @@ export default class SearchResults extends React.Component {
     let selected = event.target.value;
     this.props.sortFlights(selected);
   }
+
+  componentDidUpdate() {
+    let resultHeadingScroll = ReactDOM.findDOMNode(this);
+    scrollToComponent(resultHeadingScroll, { offset: -98, align: 'top', duration: 900})
+  }
  
   render() {
-    let sortTab, resultHeading;
+    let resultHeading, sortTab, items;
+    
     if (this.props.searchResults.length){
 
-      resultHeading = <h3 id="resultHeading">Showing {this.props.searchResults.length} flights from {this.props.searchResults[0].from} to {this.props.searchResults[0].to}...</h3>
+      // arrow = <img src="/assets/arrow.svg" alt="icon"/>
+
+      resultHeading = <h3 id="resultHeading" ref={(section) => { this.resultHeadingScroll = section }}>Showing {this.props.searchResults.length} flights from {this.props.searchResults[0].from} to {this.props.searchResults[0].to}...</h3>
 
       sortTab = 
       <Form inline>
@@ -40,9 +50,9 @@ export default class SearchResults extends React.Component {
           </FormControl>
         </FormGroup>
       </Form>
-    }
+    
 
-    let items = this.props.searchResults.map( (flight, i) => 
+      items = this.props.searchResults.map( (flight, i) => 
             
             <li className="fade-in" key={uuid()}>
                 <Panel bsStyle="info" className="mainFlightCard">
@@ -87,22 +97,21 @@ export default class SearchResults extends React.Component {
                 </Panel>
             </li>
           )
-
+    }               
     return (
       <React.Fragment>
         <ul>
-        {resultHeading}
-        {sortTab}
-        <CSSTransitionGroup
-          transitionName="results"
-          transitionAppear={true}
-          transitionAppearTimeout={500}
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-        {
-          items
-        }
-        </CSSTransitionGroup>
+          {/* {arrow} */}
+          {resultHeading}
+          {sortTab}
+          <CSSTransitionGroup
+            transitionName="results"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+          {items}
+          </CSSTransitionGroup>
         </ul>
       </React.Fragment>
     );

@@ -18,13 +18,17 @@
 
 #searchForm {
   text-align: center;
+  
 }
+
+
 
 .rbt-input-main {
   width: 300px;
 }
 
 .form-group {
+  color: #01426a;
   text-align: left;
 }
 
@@ -58,10 +62,11 @@
 }
 
 #searchBtn {
-  padding-top:10px;
+  padding-top:40px;
 }
 
 .btn {
+  letter-spacing: 1.3px;
   margin: 0 auto;
   display: block;
 }
@@ -70,7 +75,8 @@
   outline:none;
 }
 
-@media (max-width: 850px) {
+
+@media (max-width: 985px) {
   .form-group {
     margin: auto;
     text-align: left;
