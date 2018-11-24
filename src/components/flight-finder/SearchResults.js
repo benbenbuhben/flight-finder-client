@@ -3,7 +3,8 @@ import {Form, FormGroup, ControlLabel, FormControl, Panel} from 'react-bootstrap
 import { CSSTransitionGroup } from 'react-transition-group';
 import {v4 as uuid} from 'uuid';
 
-export default class SearchResultList extends React.Component {
+
+export default class SearchResults extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,7 +23,6 @@ export default class SearchResultList extends React.Component {
  
   render() {
     let sortTab, resultHeading;
-    console.log(uuid());
     if (this.props.searchResults.length){
 
       resultHeading = <h3 id="resultHeading">Showing {this.props.searchResults.length} flights from {this.props.searchResults[0].from} to {this.props.searchResults[0].to}...</h3>
@@ -94,7 +94,7 @@ export default class SearchResultList extends React.Component {
         {resultHeading}
         {sortTab}
         <CSSTransitionGroup
-          transitionName="example"
+          transitionName="results"
           transitionAppear={true}
           transitionAppearTimeout={500}
           transitionEnterTimeout={500}
