@@ -19,8 +19,8 @@ export default class SearchForm extends React.Component {
   }
 
   async componentWillMount() {
-    let baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
-    let url = `${baseURL}/api/airports/all`;
+    const baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
+    const url = `${baseURL}/api/airports/all`;
     await superagent.get(url)
       .then(results => {
         let airports = results.body;
@@ -40,11 +40,10 @@ export default class SearchForm extends React.Component {
   }
 
   render() {
-    const {origin, destination, airports} = this.state;
-    let originOptions = destination.length? airports.filter(el => el.code !== destination[0].code):airports;
-    let destinationOptions = origin.length? airports.filter(el => el.code !== origin[0].code):airports;
-    console.log(originOptions);
-    console.log(destinationOptions);
+    let {origin, destination, airports} = this.state;
+    const originOptions = destination.length? airports.filter(el => el.code !== destination[0].code):airports;
+    const destinationOptions = origin.length? airports.filter(el => el.code !== origin[0].code):airports;
+
     return (
       <Fragment>
         <h1 className="pageTitle">flight<span className="finder">finder</span></h1>
