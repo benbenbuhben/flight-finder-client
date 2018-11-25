@@ -9,6 +9,16 @@ ul > form {
   padding-bottom: 20px;
 }
 
+#resultHeading {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 20px;
+  font-size: 21px;
+  font-style: italic;
+  color: #01426a;
+  margin-bottom: 40px;
+}
+
 .row{
   display: flex;
   align-items: center;
@@ -45,15 +55,7 @@ select:focus {
   outline:none;
 }
 
-#resultHeading {
-  text-align: center;
-  margin-top: 0px;
-  padding-top: 20px;
-  font-size: 21px;
-  font-style: italic;
-  color: #01426a;
-  margin-bottom: 40px;
-}
+
 
 .fade-in {
 	opacity: 1;
@@ -157,6 +159,15 @@ select:focus {
   .fade-in {
     margin: 0px 20%;
   }
+
+  .schedule {
+    margin-right: -3em;
+  }
+  
+  .duration {
+    padding-right: 3em;
+  }
+  
 }
 
 @media (max-width: 576px) {
@@ -169,15 +180,25 @@ select:focus {
   }
 
   .schedule {
-    font-size: 3.5vw;
+    font-size: 3.9vw;
+    margin-right: -3em;
   }
   
   .duration {
-    font-size: 3.7vw;
+    font-size: 4.3vw;
+    padding-right: 3em;
   }
   
   .duration > h2 {
-    font-size: 3.7vw;
+    font-size: 4.3vw;
+  }
+
+  #resultHeading {
+    font-size: 15px;
+  }
+
+  .mainFlightCard{
+    margin: 15px;
   }
 }
 
