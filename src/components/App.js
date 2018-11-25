@@ -59,7 +59,7 @@ export default class App extends React.Component {
         </header>
         <main> 
           <section id="page1">
-            <h1 className="pageTitle">flight<span className="finder">finder</span></h1>
+            
             <SearchForm searchClass={this.state.hasError ? 'error' : 'success'} flightSearch=   {this.getFlights} airports={this.state.airports}/>
           </section>
           <section id="page2" className={this.state.flights.length? this.state.flights[0].to:null}>

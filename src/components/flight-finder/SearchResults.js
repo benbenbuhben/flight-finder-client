@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Form, FormGroup, ControlLabel, FormControl, Panel} from 'react-bootstrap';
+import {Form, Button, FormGroup, ControlLabel, FormControl, Panel} from 'react-bootstrap';
 import { CSSTransitionGroup } from 'react-transition-group';
 import scrollToComponent from 'react-scroll-to-component';
 import {v4 as uuid} from 'uuid';
@@ -14,13 +14,19 @@ export default class SearchResults extends React.Component {
       selected: '',
     };
 
-    this.handleChange =this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
     event.preventDefault();
     let selected = event.target.value;
     this.props.sortFlights(selected);
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    alert('Feature coming soon!')
   }
 
   componentDidUpdate() {
@@ -54,7 +60,7 @@ export default class SearchResults extends React.Component {
 
       items = this.props.searchResults.map( (flight, i) => 
             
-            <li className="fade-in" key={uuid()}>
+            <li className="fade-in container-fluid" key={uuid()}>
                 <Panel bsStyle="info" className="mainFlightCard">
                   <Panel.Heading>
                     <Panel.Title componentClass="h3">
@@ -62,11 +68,13 @@ export default class SearchResults extends React.Component {
                     <span className="flightNumber">Flight #{flight.flightNumber}</span>
                     </Panel.Title>
                   </Panel.Heading>
-                  <Panel.Body>
-                  <div className="schedule flightCard">
+                  <Panel.Body className="row">
+
+                  <div className="schedule flightCard col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     {new Date(flight.departs).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - <br/>{new Date(flight.arrives).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                   </div>
-                  <div className="duration flightCard">
+
+                  <div className="duration flightCard col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <h2>
                     {
                       Math.floor(((new Date(flight.arrives)-new Date(flight.departs)) % 86400000) / 3600000)
@@ -75,28 +83,48 @@ export default class SearchResults extends React.Component {
                       Math.floor((((new Date(flight.arrives)-new Date(flight.departs)) % 86400000) / 3600000)/ 60000)
                     }m </h2><h3 className="nonstop">Nonstop</h3>
                   </div>
-                  <div className="prices">
-                    <Panel bsStyle="primary" className="flightCard" >
-                      <Panel.Heading>
-                        <Panel.Title componentClass="h4">
-                        First Class
-                        </Panel.Title>
-                      </Panel.Heading>
-                      <Panel.Body className="price">${flight.firstClassPrice}</Panel.Body>
-                    </Panel>
-                    <Panel bsStyle="info" className="flightCard">
-                      <Panel.Heading>
-                          <Panel.Title componentClass="h4">
-                          Main Cabin
-                          </Panel.Title>
-                        </Panel.Heading>
-                        <Panel.Body className="price">${flight.mainCabinPrice}</Panel.Body>
-                    </Panel>
+
+                  <div className="prices col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-8 container">
+                    <div className="row">
+                      <div className="price-container col-xl-6 col-lg-6 col-sm-6 col-xs-6">
+                          <Panel bsStyle="info" className="flightCard">
+                            <Panel.Heading>
+                              <Panel.Title componentClass="h4">
+                              Main Cabin
+                              </Panel.Title>
+                            </Panel.Heading>
+                            <Panel.Body className="price">${flight.mainCabinPrice}</Panel.Body>
+                          </Panel>
+                        </div>
+                        <div className="price-container col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <Panel bsStyle="primary" className="flightCard" >
+                          <Panel.Heading>
+                            <Panel.Title componentClass="h4">
+                            First Class
+                            </Panel.Title>
+                          </Panel.Heading>
+                          <Panel.Body className="price">${flight.firstClassPrice}</Panel.Body>
+                        </Panel>
+                      </div>
+                    </div>
                   </div>
-                  </Panel.Body>
-                </Panel>
+
+                  <div className="btn-wrapper col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <Button
+                      className="btn-outline-primary noSelect align-middle"
+                      bsStyle="primary"
+                      type="submit"
+                      onClick={this.handleClick}
+                      >
+                      Book Now
+                   </Button>
+                  </div>
+                  
+                </Panel.Body>
+              </Panel>
             </li>
           )
+          
     }               
     return (
       <React.Fragment>

@@ -21,8 +21,6 @@
   
 }
 
-
-
 .rbt-input-main {
   width: 300px;
 }
@@ -80,5 +78,41 @@
   .form-group {
     margin: auto;
     text-align: left;
+  }
+
+  .form-control {
+    margin-bottom: 15px;
+  }
+
+  #arrow {
+    display: none;
+  }
+  
+}
+
+@media (max-width: 576px) {
+  #page1 #searchForm > .form-inline {
+    padding: 0px;
+  }
+
+  #page1 .rbt {
+    margin-bottom: 10px;
+  }
+
+  #page1 .form-group {
+    width: 90%;
+    margin: auto;
+  }
+
+  #page1 .input-group {
+    width: 100% !important;
+  }
+  
+  #page1 .form-control {
+    width: 100% !important;
+  }
+
+  #searchBtn {
+    padding-top:20px;
   }
 }

@@ -40,14 +40,17 @@ export default class SearchForm extends React.Component {
   }
 
   render() {
-    const {origin, destination} = this.state;
-    let validationStateOrigin, validationStateDestination;
-
+    const {origin, destination, airports} = this.state;
+    let originOptions = destination.length? airports.filter(el => el.code !== destination[0].code):airports;
+    let destinationOptions = origin.length? airports.filter(el => el.code !== origin[0].code):airports;
+    console.log(originOptions);
+    console.log(destinationOptions);
     return (
       <Fragment>
+        <h1 className="pageTitle">flight<span className="finder">finder</span></h1>
         <div id="searchForm">
           <Form onSubmit={this.handleSubmit} inline>
-            <FormGroup validationState={validationStateOrigin} bsSize="large">
+            <FormGroup bsSize="large">
                 <ControlLabel>From</ControlLabel>
                 <Typeahead
                   id="searchFormOrigin"
@@ -57,12 +60,12 @@ export default class SearchForm extends React.Component {
                   minLength={1}
                   labelKey="name"
                   multiple={false}  
-                  options={this.state.airports}
+                  options={originOptions}
                   placeholder="Select a departure airport..."
                   width="100px"
                 />
             </FormGroup><div id="arrow">  ➤  </div>
-            <FormGroup validationState={validationStateDestination} bsSize="large">
+            <FormGroup bsSize="large">
                 <ControlLabel>To</ControlLabel>
                 <Typeahead
                   id="searchFormDestination"
@@ -72,7 +75,7 @@ export default class SearchForm extends React.Component {
                   minLength={1}
                   labelKey="name"
                   multiple={false}  
-                  options={this.state.airports}
+                  options={destinationOptions}
                   placeholder="Select a destination airport..."
                   width="100px"
                 />
