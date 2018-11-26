@@ -9,7 +9,7 @@ header {
   height: 90px;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
 }
 
 header > h1 {
@@ -31,7 +31,7 @@ header > h1 {
 }
 
 .finder{
-  color: #99bfd6;
+  color: #7ab4d6;
   font-weight: 300;
 }
 

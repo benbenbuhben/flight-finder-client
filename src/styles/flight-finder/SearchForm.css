@@ -36,8 +36,8 @@
   padding: 20px;
   padding-bottom: 5px;
   font-size: 30px;
-  vertical-align: top;
   position: relative;
+  vertical-align: top;
 }
 
 #searchForm > .form-inline {
@@ -62,10 +62,17 @@
   padding-top:40px;
 }
 
+#page1 .btn {
+  height: 43px;
+  width: 300px;
+}
+
 .btn {
+  color: #f4f6f9;
+  display: block;
+  font-size: 16px;
   letter-spacing: 1.3px;
   margin: 0 auto;
-  display: block;
 }
 
 .btn:focus {
@@ -86,6 +93,15 @@
   #arrow {
     display: none;
   }
+
+  #searchBtn {
+    padding-top:20px;
+  }
+
+  #page1 .btn {
+    height: 40px;
+    width: 300px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -98,8 +114,8 @@
   }
 
   #page1 .form-group {
-    width: 90%;
     margin: auto;
+    width: 90%;
   }
 
   #page1 .input-group {
@@ -112,5 +128,10 @@
 
   #searchBtn {
     padding-top:20px;
+  }
+
+  #page1 .btn {
+    height: 40px;
+    width: 90%;
   }
 }

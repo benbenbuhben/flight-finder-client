@@ -18,10 +18,10 @@ export default class SearchForm extends React.Component {
     this.handleFocus = this.handleFocus.bind(this)
   }
 
-  async componentWillMount() {
+  componentWillMount() {
     const baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
     const url = `${baseURL}/api/airports/all`;
-    await superagent.get(url)
+    superagent.get(url)
       .then(results => {
         let airports = results.body;
         this.setState({airports});  
