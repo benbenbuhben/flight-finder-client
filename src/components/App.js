@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import SearchForm from './flight-finder/SearchForm.js';
+import SearchForm from './flight-finder/SearchForm';
 import SearchResults from './flight-finder/SearchResults';
 import superagent from 'superagent';
 import '../styles/App.css';

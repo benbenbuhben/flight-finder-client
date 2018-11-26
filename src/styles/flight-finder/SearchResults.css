@@ -5,36 +5,35 @@ ul {
 }
 
 ul > form {
-  text-align: center;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 #resultHeading {
-  text-align: center;
-  margin-top: 0px;
-  padding-top: 20px;
+  color: #01426a;
   font-size: 21px;
   font-style: italic;
-  color: #01426a;
   margin-bottom: 40px;
+  margin-top: 0px;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .row{
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;   
-  flex-wrap: wrap;
-  margin-top:10px;
   margin-bottom:10px;
+  margin-top:10px;
 }
 
 .prices .row {
-  display: flex;
   align-items: center;
-  justify-content: space-between;   
-  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;  
   margin-top:10px;
   margin-bottom:10px;
+  white-space: nowrap; 
 }
 
 .row > .btn {
@@ -50,26 +49,23 @@ ul > form {
   outline:none;
 }
 
-
 select:focus {
   outline:none;
 }
 
-
-
 .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
+  animation-name: fadeInOpacity;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
   animation-duration: 0.3s;
   margin: 0px 10%;
+	opacity: 1;
 }
 
 .mainFlightCard {
-  opacity: 0.9;
   box-shadow: 0px 1px 5px 1px rgba(100, 100, 100, 0.49);
   margin: 15px 3em;
+  opacity: 0.9;
 }
 
 @keyframes fadeInOpacity {
@@ -82,41 +78,46 @@ select:focus {
 }
 
 .flightNumber {
+  color: gray;
   display: block;
   font-style: italic;
-  color: gray;
 }
 
 .schedule {
-  font-weight: 700;
-  font-size: 2.3vw;
   color: #01426a;
+  font-size: 2.3vw;
+  font-weight: 700;
   text-align: center;
 }
 
 .duration {
+  color: #01426a;
   font-size: 2.5vw;
   font-weight: 400;
-  color: #01426a;
   text-align: center;
 }
 
 .duration > h2 {
-  margin: 0px;
   font-size: 2.5vw;
+  margin: 0px;
 }
 
 .nonstop {
   color: gray;
-  font-weight: 400;
   font-size: 2vw;
+  font-weight: 400;
   margin: 0px;
 }
 
 .prices .flightCard {
   box-shadow: 0px 1px 3px 1px rgba(197, 121, 121, 0.3);
-  text-align: center;
   margin:0px;
+  text-align: center;
+}
+
+.prices {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .price-container {
@@ -134,16 +135,16 @@ select:focus {
 }
 
 .price-container .panel-title {
-  white-space: nowrap;
-  padding:10px;
-  margin:0px;
   font-size: 1vw;
+  margin:0px;
+  padding:10px;
+  white-space: nowrap;
 }
 
 .prices .panel-body {
-  text-align: center;
   font-size: 1.3em;
   font-weight: bold;
+  text-align: center;
 }
 
 .noSelect {
@@ -153,6 +154,18 @@ select:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.scroll-up-button:focus {
+  outline: none;
+}
+
+.scroll-up-button:hover {
+  opacity: 1 !important;
+}
+
+aside:hover {
+  display:none;
 }
 
 @media (max-width: 992px) {
@@ -167,6 +180,14 @@ select:focus {
   .duration {
     padding-right: 3em;
   }
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .prices .row {
+    flex-wrap: nowrap;
+  }
   
 }
 
@@ -177,6 +198,10 @@ select:focus {
 
   .price-container .panel-title {
     font-size: 2vw;
+  }
+
+  .finder {
+    color: #f4f6f9;
   }
 
   .schedule {
@@ -199,6 +224,14 @@ select:focus {
 
   .mainFlightCard{
     margin: 15px;
+  }
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .prices .row {
+    flex-wrap: nowrap;
   }
 }
 

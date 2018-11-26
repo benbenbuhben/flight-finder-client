@@ -4,7 +4,7 @@ import {Form, Button, FormGroup, ControlLabel, FormControl, Panel} from 'react-b
 import { CSSTransitionGroup } from 'react-transition-group';
 import scrollToComponent from 'react-scroll-to-component';
 import {v4 as uuid} from 'uuid';
-
+import ScrollUpButton from "react-scroll-up-button";
 
 export default class SearchResults extends React.Component {
   constructor(props) {
@@ -35,12 +35,30 @@ export default class SearchResults extends React.Component {
   }
  
   render() {
-    let resultHeading, sortTab, items;
+    let resultHeading, sortTab, items, arrow, listStyle;
+    const scrollButtonStyle = {
+      display: 'block',
+      position: 'relative',
+      right: '0',
+      bottom: '0',
+      width: '50px',
+      margin: 'auto',
+      transition: 'opacity 0.5s ease-in-out 0s',
+      opacity: '0.4',
+      fill: '#f4f6f9;',
+      backgroundColor: 'transparent',
+      zIndex: '1',  
+    };
     
     if (this.props.searchResults.length){
 
-      // arrow = <img src="/assets/arrow.svg" alt="icon"/>
+      listStyle = {
+        height: 'calc(100vh - 100px)',
+        overflow: 'scroll',
+      }
 
+      arrow = <ScrollUpButton style={scrollButtonStyle} ToggledStyle={{right: 0, opacity: 0.5}} ContainerClassName="scroll-up-button"/>
+      
       resultHeading = <h3 id="resultHeading" ref={(section) => { this.resultHeadingScroll = section }}>Showing {this.props.searchResults.length} flights from {this.props.searchResults[0].from} to {this.props.searchResults[0].to}...</h3>
 
       sortTab = 
@@ -57,7 +75,6 @@ export default class SearchResults extends React.Component {
         </FormGroup>
       </Form>
     
-
       items = this.props.searchResults.map( (flight, i) => 
             
             <li className="fade-in container-fluid" key={uuid()}>
@@ -112,14 +129,14 @@ export default class SearchResults extends React.Component {
                   <div className="btn-wrapper col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <Button
                       className="btn-outline-primary noSelect align-middle"
-                      bsStyle="primary"
+                      bsStyle="success"
                       type="submit"
                       onClick={this.handleClick}
                       >
                       Book Now
                    </Button>
                   </div>
-                  
+
                 </Panel.Body>
               </Panel>
             </li>
@@ -128,8 +145,8 @@ export default class SearchResults extends React.Component {
     }               
     return (
       <React.Fragment>
-        <ul>
-          {/* {arrow} */}
+        <ul style={listStyle}>
+          {arrow}
           {resultHeading}
           {sortTab}
           <CSSTransitionGroup
