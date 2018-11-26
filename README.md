@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Flight Finder Client
+
+Front-end is up at http://imaginary-air.s3-website-us-west-2.amazonaws.com/
 
 ## Available Scripts
 
