@@ -1,44 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a id="top"></a>
+# Flight Finder Client
 
-## Available Scripts
+**Author**: Ben Hurst
 
-In the project directory, you can run:
+**Version**: 0.1.0
 
-### `npm start`
+**Live Site**: http://imaginary-air.s3-website-us-west-2.amazonaws.com/
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Live Server ***(redirects to Swagger API Docs)*****: https://flightfinderapi.azurewebsites.net/
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+**Back-end GitHub Repo:** https://github.com/benbenbuhben/FlightFinderAPI
+___
 
-### `npm test`
+## Table of contents
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [Overview](#overview)
+* [Getting Started](#getting-started)
+* [Change Log](#change-log)
 
-### `npm run build`
+___
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<a id="overview"></a>
+## Overview
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Simple web interface to search and sort airline flight information.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Key Features:**
 
-### `npm run eject`
+* React.js components configured to consume [FlightFinderAPI](https://github.com/benbenbuhben/FlightFinderAPI) endpoints. UI form input validation is dynamically loaded with current airports from API call.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Responsive styling done with Bootstrap Grid Layout via [React Bootstrap](https://react-bootstrap.github.io/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Typeahead feature provided by [React Bootstrap Typeahead](http://ericgio.github.io/react-bootstrap-typeahead/).
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+___
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<a id="getting-started"></a>
 
-## Learn More
+## Getting Started in Development (using npm)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+In a terminal instance:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. ```git clone https://github.com/benbenbuhben/FlightFinderAPI.git```
+2. ```cd flight-finder-client/```
+3. ```npm i``` to install required dependencies.
+4. ```npm run start```
+
+<a id="change-log"></a> 
+
+## Change Log
+
+11-20-2018 4:00pm - Initial Scaffolding.
+
+11-21-2018 10:24am - API endpoint integration functional.
+
+11-22-2018 5:45pm - Input form validation.
+
+11-24-2018 09:37pm - Responsive styling using React Bootstrap grid.
+
+11-25-2018 2:38pm - Deployed to AWS S3.
+
+[Back to top](#top)
