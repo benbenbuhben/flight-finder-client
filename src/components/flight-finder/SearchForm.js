@@ -9,27 +9,26 @@ export default class SearchForm extends React.Component {
 
     this.state = {
       airports: [],
-      selected: [],
       origin: [],
       destination: [],
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
-  componentWillMount() {
-    const baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
+  componentDidMount() {
+    const baseURL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://flightfinderapi.azurewebsites.net';
     const url = `${baseURL}/api/airports/all`;
     superagent.get(url)
       .then(results => {
         let airports = results.body;
         this.setState({airports});  
-      })
+      });
   }
 
   handleSubmit(event){
-    event.preventDefault()
+    event.preventDefault();
     let originCode = this.state.origin[0].code;
     let destinationCode = this.state.destination[0].code;
     this.props.flightSearch(originCode, destinationCode);
@@ -41,8 +40,8 @@ export default class SearchForm extends React.Component {
 
   render() {
     let {origin, destination, airports} = this.state;
-    const originOptions = destination.length? airports.filter(el => el.code !== destination[0].code):airports;
-    const destinationOptions = origin.length? airports.filter(el => el.code !== origin[0].code):airports;
+    const originOptions = destination.length ? airports.filter(el => el.code !== destination[0].code) : airports;
+    const destinationOptions = origin.length ? airports.filter(el => el.code !== origin[0].code) : airports;
 
     return (
       <Fragment>
@@ -50,34 +49,34 @@ export default class SearchForm extends React.Component {
         <div id="searchForm">
           <Form onSubmit={this.handleSubmit} inline>
             <FormGroup bsSize="large">
-                <ControlLabel>From</ControlLabel>
-                <Typeahead
-                  id="searchFormOrigin"
-                  bsClass="searchForm"
-                  onChange={(origin) => this.setState({origin})}
-                  onFocus={this.handleFocus}
-                  minLength={1}
-                  labelKey="name"
-                  multiple={false}  
-                  options={originOptions}
-                  placeholder="Select a departure airport..."
-                  width="100px"
-                />
+              <ControlLabel>From</ControlLabel>
+              <Typeahead
+                id="searchFormOrigin"
+                bsClass="searchForm"
+                onChange={origin => this.setState({origin})}
+                onFocus={this.handleFocus}
+                minLength={1}
+                labelKey="name"
+                multiple={false}  
+                options={originOptions}
+                placeholder="Select a departure airport..."
+                width="100px"
+              />
             </FormGroup><div id="arrow">  ➤  </div>
             <FormGroup bsSize="large">
-                <ControlLabel>To</ControlLabel>
-                <Typeahead
-                  id="searchFormDestination"
-                  bsClass="searchForm"
-                  onChange={(destination) => this.setState({destination})}
-                  onFocus={this.handleFocus}
-                  minLength={1}
-                  labelKey="name"
-                  multiple={false}  
-                  options={destinationOptions}
-                  placeholder="Select a destination airport..."
-                  width="100px"
-                />
+              <ControlLabel>To</ControlLabel>
+              <Typeahead
+                id="searchFormDestination"
+                bsClass="searchForm"
+                onChange={destination => this.setState({destination})}
+                onFocus={this.handleFocus}
+                minLength={1}
+                labelKey="name"
+                multiple={false}  
+                options={destinationOptions}
+                placeholder="Select a destination airport..."
+                width="100px"
+              />
             </FormGroup>{' '}
             <div id="searchBtn">
               <Button

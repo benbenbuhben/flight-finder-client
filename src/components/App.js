@@ -18,13 +18,13 @@ export default class App extends React.Component {
   }
 
   getFlights(origin, destination) {
-    let baseURL = window.location.hostname === 'localhost'? 'http://localhost:5000': 'https://flightfinderapi.azurewebsites.net';
+    let baseURL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://flightfinderapi.azurewebsites.net';
     let url = `${baseURL}/api/flights/search?from=${origin}&to=${destination}`;
 
     superagent.get(url)
       .then(results => {
         this.setState({hasError: false});
-        let flights= results.body
+        let flights = results.body;
         this.setState({flights});
       })
       .catch(err => console.log(err));
@@ -48,7 +48,7 @@ export default class App extends React.Component {
       default:
         break;
     }
-    this.setState({flights})
+    this.setState({flights});
   }
 
   render() {
